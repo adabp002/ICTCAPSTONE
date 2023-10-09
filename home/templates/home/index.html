@@ -3,6 +3,121 @@
 {% block title %}Home{% endblock %}
 
 {% block content %}
-    <h1>Hello World!</h1>
-    <p>This is the homepage.</p>
+<div class="page-content">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Home Page</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f2f2f2;
+            }
+    
+            .container {
+                text-align: center;
+                margin-top: 100px;
+            }
+    
+            h1 {
+                color: #333;
+            }
+    
+            p {
+                color: #777;
+            }
+    
+            a {
+                text-decoration: none;
+                color: #007BFF;
+            }
+           
+            .classify_container {
+            position: relative;
+            width: 50%;
+            text-align: center;
+            padding: 50px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            margin: 0 auto; /* Center the container horizontally */
+            }
+            h1 {
+                color: #333;
+            }
+            label {
+                font-weight: bold;
+            }
+            input[type="text"] {
+                max-width: 400px; /* Set a maximum width for the input box */
+                width: 100%; /* Allow the input box to expand up to the maximum width */
+                padding: 10px;
+                margin-bottom: 10px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
+            button[type="submit"] {
+                padding: 10px 20px;
+                background-color: #007bff;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+            .info-icon {
+                cursor: pointer;
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                font-size: 16px;
+                border: 1px solid #ccc; /* Add a border */
+                border-radius: 50%; /* Make it rounded */
+                background-color: #fff; /* Add a background color */
+                width: 30px; /* Set width */
+                height: 30px; /* Set height */
+                display: flex; /* Use flexbox */
+                align-items: center; /* Center vertically */
+                justify-content: center; /* Center horizontally */
+            }
+            .info-text {
+                display: none;
+                position: absolute;
+                top: 20px;
+                left: 60px;
+                background-color: #fff;
+                padding: 5px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                max-width: 250px;
+                font-size: 12px;
+        }
+
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            {% if user.is_authenticated %}            
+                <div>
+                    <div class="classify_container">
+                        <h1>Classify Sentence Requirements</h1>
+                        <form method="post">
+                            {% csrf_token %}
+                            <label for="security_requirement">Security Requirement:</label>
+                            <input type="text" name="security_requirement" required>
+                            <br>
+                            <button type="submit">Classify</button>
+                        </form>
+                    </div>
+                    <script>
+                    </script>
+                </div>
+            {% else %}
+                <h1>Welcome to Group 34's Project</h1>
+                <p>Please register or login to continue.</p>
+                <p><a href="{% url 'home' %}">Login</a> or <a href="{% url 'home' %}">Register</a></p>
+            {% endif %}
+        </div>
+    </body>    
+    </html>
+</div>
 {% endblock %}
