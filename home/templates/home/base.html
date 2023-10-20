@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}ICT Capstone Group 34{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,19 +18,23 @@
             background-color: #f0f0f0;
         }
         #navbar {
-            background-color: #a9a9a9;
+            background-color: #183897;
             overflow: hidden;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             position: fixed; /* Fixed position to keep it at the top */
             width: 100%; /* Take up the full width of the viewport */
             top: 0; /* Stick it to the top of the page */
+            padding: 8px ;
         }
         #navbar h2 {
-            margin: 0;
-            margin-right: 20px;
-            padding: 14px 16px;
+            /* margin: 0; */
+            /* margin-right: 20px; */
+            padding: 4px ;
             color: white;
+            font-size: x-large;
+            font-weight: 500;
         }
         #navbar .divider {
             border-left: 2px solid white;
@@ -37,26 +47,33 @@
             text-align: center;
             padding: 14px 16px;
             text-decoration: none;
+            border-radius: 8px;
         }
         #navbar a:hover {
-            background-color: #d3d3d3;
+            background-color: #f6f6f6;
             color: black;
         }
         #content {
             padding: 20px;
         }
+        
     </style>
 </head>
 <body>
     <div id="navbar">
         <h2>ICT Capstone Group 34 </h2>
-        <div class="divider"></div>
-        <a href="{% url 'index' %}">Home</a>
-        <!-- Add more navigation items here -->
+        <!-- <div class="divider"></div> -->
+        <div>
+
+            <a href="{% url 'index' %}">Home</a>
+            <a href="{% url 'user-guide' %}">User Guide</a>    
+        </div>
     </div>
+
+
     <div id="content">
         {% block content %}
-        <!-- Content will be overridden by child templates -->
+        
         {% endblock %}
     </div>
 </body>
