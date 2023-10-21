@@ -1,22 +1,25 @@
 from django.shortcuts import render
 import torch
 from transformers import BertTokenizer, BertForSequenceClassification
+from django.shortcuts import render, redirect
+from .models import Sentence
+
 
 def index(request):
     if request.method == 'POST':
         input_text = request.POST['security_requirement']
-
-        # Load the BERT model and tokenizer (same code as in your previous example)
+                
+        user = request.user
+        Sentence.objects.create(user=user, name=input_text)
+        
         model_path = 'bert_model'
         tokenizer = BertTokenizer.from_pretrained(model_path)
         model = BertForSequenceClassification.from_pretrained(model_path)
         model.eval()
 
-        # Tokenize and convert the input text to input IDs
         input_ids = tokenizer.encode(input_text, add_special_tokens=True)
         input_ids = torch.tensor(input_ids).unsqueeze(0)
 
-        # Forward pass to get predictions
         with torch.no_grad():
             outputs = model(input_ids)
 
@@ -59,6 +62,7 @@ def index(request):
 
 
         predicted_label_description = label_descriptions.get(predicted_label, 'Unknown')
+        
 
         return render(request, 'home/classification_result.html', {'input_text': input_text, 'predicted_label': predicted_label, 'predicted_label_description': predicted_label_description})
     return render(request, 'home/index.html')
