@@ -1,46 +1,127 @@
 {% extends "base.html" %}
 
 {% block content %}
+<main>
+    <div class="container">
+
+      <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+                <div class="d-flex justify-content-center py-4">
+  
+                    <h3 class="card-title text-center pb-0 fs-4 color-primary"  style="color: #183897" >Welcome to Group 34</h3>
+                  </div>
+
+              <div class="card mb-3">
+
+                <div class="card-body">
+
+                  <div class="pt-4 pb-2">
+                    <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
+                    <p class="text-center small">Enter your personal details to create account</p>
+                  </div>
+
+                  <form class="row g-3 needs-validation"  method="post">
+                    
+                        {% csrf_token %}
+                    <br>
+                        <br>
+                     
+                     
+         
+                    
+                    
+                      <div class="col-12">
+                        <label for="yourUsername" class="form-label">    {{ form.username.label_tag }} </label>
+                        <div class="input-group has-validation">
+                          <span class="input-group-text" id="inputGroupPrepend">@</span>
+                          <input type="text" name="username" class="form-control" id='{{ form.username }}' required>
+                          <div class="invalid-feedback">Please choose a username.</div>
+                        </div>
+                      </div>
+
+                    <div class="col-12">
+                      <label for="yourEmail" class="form-label">{{ form.email.label_tag }} </label>
+                      <input type="email" name="email" class="form-control" id='{{ form.email }}' required>
+                      <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                    </div>
+
+
+                    <div class="col-12">
+                        <label for="yourPassword" class="form-label">   {{ form.password1.label_tag }} </label>
+                        <input type="password" name="password" class="form-control" id='{{ form.password1 }}' required>
+                        <div class="invalid-feedback">Please enter your password!</div>
+                      </div>
+                      
+                      <div class="col-12">
+                        <label for="yourPassword" class="form-label">   {{ form.password2.label_tag }} </label>
+                        <input type="password" name="password" class="form-control" id='{{ form.password2 }}' required>
+                        <div class="invalid-feedback">Please enter your password!</div>
+                      </div>
+                      <div class="col-12">
+                        <div class="form-check">
+                          <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
+                          <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
+                          <div class="invalid-feedback">You must agree before submitting.</div>
+                        </div>
+                      </div>
+    
+                      {% if form.errors %}
+                            <ul class="errorlist">
+                                {% for error in form.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    
+                        <!-- Display custom error messages for specific fields -->
+                        {% if form.username.errors %}
+                            <span class="error">{{ form.username.errors.0 }}</span><br>
+                        {% endif %}
+                    
+                        {% if form.email.errors %}
+                            <span class="error">{{ form.email.errors.0 }}</span><br>
+                        {% endif %}
+                    
+                        {% if form.password1.errors %}
+                            <span class="error">{{ form.password1.errors.0 }}</span><br>
+                        {% endif %}
+                    
+                        {% if form.password2.errors %}
+                            <span class="error">{{ form.password2.errors.0 }}</span><br>
+                        {% endif %}
+                    <div class="col-12">
+                      <button class="btn btn-primary w-100" type="submit">Create Account</button>
+                    </div>
+                    <div class="col-12">
+                      <p class="small mb-0">Already have an account? <a href="{% url 'login' %}">Log in</a></p>
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+
+              <div class="credits">
+           Designed by <a href="">Group 34
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
 <div class="container-fluid" style="margin-left: 20%;">
     <h2>Register</h2>
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.username.label_tag }} {{ form.username }}<br>
-        {{ form.email.label_tag }} {{ form.email }}<br>
-        {{ form.password1.label_tag }} {{ form.password1 }}<br>
-        {{ form.password2.label_tag }} {{ form.password2 }}<br>
-    
-        <!-- Display custom error messages for the fields -->
-        {% if form.errors %}
-            <ul class="errorlist">
-                {% for error in form.errors %}
-                    <li>{{ error }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
-    
-        <!-- Display custom error messages for specific fields -->
-        {% if form.username.errors %}
-            <span class="error">{{ form.username.errors.0 }}</span><br>
-        {% endif %}
-    
-        {% if form.email.errors %}
-            <span class="error">{{ form.email.errors.0 }}</span><br>
-        {% endif %}
-    
-        {% if form.password1.errors %}
-            <span class="error">{{ form.password1.errors.0 }}</span><br>
-        {% endif %}
-    
-        {% if form.password2.errors %}
-            <span class="error">{{ form.password2.errors.0 }}</span><br>
-        {% endif %}
-    
-        <button type="submit">Register</button>
-    </form>
+   
 
-    <a href="{% url 'login' %}">Already have an account? Login here.</a>
+    <a href="">Already have an account? Login here.</a>
 </div>
 
 {% endblock %}
