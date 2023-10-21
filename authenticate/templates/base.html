@@ -10,6 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -63,8 +64,16 @@
     <div id="navbar">
         <h2>ICT Capstone Group 34 </h2>
         
-    </div>
 
+
+<div>
+
+    <a href="{% url 'index' %}">Home</a>
+    <a href="{% url 'user-guide' %}">User Guide</a>    
+    
+</div>
+    
+    </div>
 
     <div id="content">
         {% block content %}
