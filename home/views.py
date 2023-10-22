@@ -66,3 +66,7 @@ def index(request):
 
         return render(request, 'home/classification_result.html', {'input_text': input_text, 'predicted_label': predicted_label, 'predicted_label_description': predicted_label_description})
     return render(request, 'home/index.html')
+
+
+def aboutus(request):
+    return render(request, 'home/about_us.html')

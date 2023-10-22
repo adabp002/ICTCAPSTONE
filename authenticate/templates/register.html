@@ -28,11 +28,7 @@
                         {% csrf_token %}
                     <br>
                         <br>
-                     
-                     
-         
-                    
-                    
+                                         
                       <div class="col-12">
                         <label for="yourUsername" class="form-label">    {{ form.username.label_tag }} </label>
                         <div class="input-group has-validation">
@@ -51,13 +47,13 @@
 
                     <div class="col-12">
                         <label for="yourPassword" class="form-label">   {{ form.password1.label_tag }} </label>
-                        <input type="password" name="password" class="form-control" id='{{ form.password1 }}' required>
+                        <input type="password" name="password1" class="form-control" id='{{ form.password1 }}' required>
                         <div class="invalid-feedback">Please enter your password!</div>
                       </div>
                       
                       <div class="col-12">
                         <label for="yourPassword" class="form-label">   {{ form.password2.label_tag }} </label>
-                        <input type="password" name="password" class="form-control" id='{{ form.password2 }}' required>
+                        <input type="password" name="password2" class="form-control" id='{{ form.password2 }}' required>
                         <div class="invalid-feedback">Please enter your password!</div>
                       </div>
                       <div class="col-12">
@@ -76,7 +72,6 @@
                             </ul>
                         {% endif %}
                     
-                        <!-- Display custom error messages for specific fields -->
                         {% if form.username.errors %}
                             <span class="error">{{ form.username.errors.0 }}</span><br>
                         {% endif %}

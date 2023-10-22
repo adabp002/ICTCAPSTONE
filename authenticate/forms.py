@@ -16,13 +16,13 @@ class RegistrationForm(UserCreationForm):
         password1 = cleaned_data.get("password1")
         password2 = cleaned_data.get("password2")
 
-        if len(username) < 3:
+        if username is not None and len(username) < 3:
             self.add_error("username", "Username must be at least 3 characters long")
 
-        if len(password1) < 8:
+        if password1 is not None and len(password1) < 8:
             self.add_error("password1", "Password must be at least 8 characters long")
 
-        if password1 and password2 and password1 != password2:
+        if password1 is not None and password2 is not None and password1 != password2:
             self.add_error("password2", "Passwords do not match")
         
         return cleaned_data
