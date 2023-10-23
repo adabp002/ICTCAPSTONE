@@ -3,8 +3,9 @@ import torch
 from transformers import BertTokenizer, BertForSequenceClassification
 from django.shortcuts import render, redirect
 from .models import Sentence
+from django.views.decorators.csrf import csrf_exempt
 
-
+@csrf_exempt
 def index(request):
     if request.method == 'POST':
         input_text = request.POST['security_requirement']
