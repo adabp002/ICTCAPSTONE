@@ -3,9 +3,7 @@ import torch
 from transformers import BertTokenizer, BertForSequenceClassification
 from django.shortcuts import render, redirect
 from .models import Sentence
-from django.views.decorators.csrf import csrf_exempt
 
-@csrf_exempt
 def index(request):
     if request.method == 'POST':
         input_text = request.POST['security_requirement']
@@ -68,4 +66,5 @@ def index(request):
         return render(request, 'home/classification_result.html', {'input_text': input_text, 'predicted_label': predicted_label, 'predicted_label_description': predicted_label_description})
     return render(request, 'home/index.html')
 
-
+def aboutus(request):
+    return render(request, 'home/about_us.html')
